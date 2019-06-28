@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80013
 File Encoding         : 65001
 
-Date: 2019-06-28 14:08:11
+Date: 2019-06-28 16:26:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,9 +23,6 @@ CREATE TABLE `tb_cart` (
   `id` int(2) NOT NULL AUTO_INCREMENT COMMENT '卡片号',
   `auser_id` int(11) NOT NULL COMMENT '顾客号',
   `goods_id` int(11) NOT NULL COMMENT '商品号',
-  `num` int(11) NOT NULL COMMENT '商品数量',
-  `status` tinyint(4) NOT NULL COMMENT '购物车状态',
-  `order_id` int(11) NOT NULL COMMENT '订单号',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -47,11 +44,13 @@ CREATE TABLE `tb_goods` (
   `gstatus` tinyint(4) NOT NULL COMMENT '商品状态（0-）',
   `type_id` int(11) DEFAULT '0' COMMENT '商品类别序号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_goods
 -- ----------------------------
+INSERT INTO `tb_goods` VALUES ('1', 'G001', '羽毛球拍', '55.00', 'src', '很好', '1', '1');
+INSERT INTO `tb_goods` VALUES ('2', 'G002', '羽毛', '10.00', 'rc', 'haneccwsa', '1', '1');
 
 -- ----------------------------
 -- Table structure for tb_order
@@ -59,18 +58,42 @@ CREATE TABLE `tb_goods` (
 DROP TABLE IF EXISTS `tb_order`;
 CREATE TABLE `tb_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单号',
+  `oid` varchar(5) NOT NULL,
+  `auser_id` int(11) NOT NULL COMMENT '顾客号',
   `amount` double NOT NULL COMMENT '价格合计',
   `status` tinyint(4) NOT NULL COMMENT '订单状态',
   `orderdate` datetime NOT NULL COMMENT '订单时间',
   `message` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '订单信息',
-  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '收货地址',
-  `auser_id` int(11) NOT NULL COMMENT '顾客号',
+  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '收货地址',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_order
 -- ----------------------------
+INSERT INTO `tb_order` VALUES ('1', 'O01', '1', '15.8', '1', '2019-06-28 15:27:56', '优秀', '天津');
+INSERT INTO `tb_order` VALUES ('2', 'O02', '1', '16.8', '1', '2019-06-28 15:28:38', '良好', '打算');
+
+-- ----------------------------
+-- Table structure for tb_orderinfo
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_orderinfo`;
+CREATE TABLE `tb_orderinfo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `goods_id` int(11) NOT NULL,
+  `num` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of tb_orderinfo
+-- ----------------------------
+INSERT INTO `tb_orderinfo` VALUES ('1', '1', '1', '10', '1');
+INSERT INTO `tb_orderinfo` VALUES ('2', '1', '1', '20', '2');
+INSERT INTO `tb_orderinfo` VALUES ('3', '1', '2', '30', '1');
+INSERT INTO `tb_orderinfo` VALUES ('4', '1', '2', '50', '2');
 
 -- ----------------------------
 -- Table structure for tb_sysuser
@@ -139,3 +162,15 @@ INSERT INTO `tb_user` VALUES ('2', 'U002', 'shanshan', '321', '男', '1565846513
 INSERT INTO `tb_user` VALUES ('3', 'U003', 'jiawei', '111', '男', '15615649886', '山西', '1564279826@qq.com', '2000-05-30', null, '1');
 INSERT INTO `tb_user` VALUES ('4', 'U004', 'yuyu', '222', '女', '15568456431', '四川', '1546114651@qq.com', '1985-12-23', null, '1');
 INSERT INTO `tb_user` VALUES ('5', 'U005', 'lichen', '333', '男', '51616518946', '福建', '1561561561@qq.com', '1987-12-26', null, '1');
+
+-- ----------------------------
+-- View structure for v_ordergoods
+-- ----------------------------
+DROP VIEW IF EXISTS `v_ordergoods`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_ordergoods` AS select `tb_goods`.`gpicture` AS `商品图片`,`tb_orderinfo`.`num` AS `商品个数`,`tb_goods`.`gprice` AS `商品单价` from (`tb_goods` join `tb_orderinfo`) where ((`tb_orderinfo`.`user_id` = 1) and (`tb_orderinfo`.`order_id` = 1)) ;
+
+-- ----------------------------
+-- View structure for v_orderinfo
+-- ----------------------------
+DROP VIEW IF EXISTS `v_orderinfo`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_orderinfo` AS select `tb_order`.`oid` AS `订单编号`,`tb_order`.`status` AS `订单状态`,`tb_order`.`message` AS `订单信息`,`tb_order`.`amount` AS `总价` from `tb_order` where (`tb_order`.`auser_id` = 1) ;
