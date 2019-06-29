@@ -3,7 +3,7 @@ package com.isoft.entity;
 
 import java.io.Serializable;
 
-public class TbGoods implements Serializable{
+public class TbGoods  implements Serializable {
 
   private long id;
   private String gid;
@@ -14,7 +14,8 @@ public class TbGoods implements Serializable{
   private long gstatus;
   private long typeId;
 
-  public TbGoods() { }
+  public TbGoods() {
+  }
 
   public TbGoods(long id, String gid, String gname, double gprice, String gpicture, String gmessage, long gstatus, long typeId) {
     this.id = id;
@@ -98,4 +99,17 @@ public class TbGoods implements Serializable{
     this.typeId = typeId;
   }
 
+  @Override
+  public String toString() {
+    return "TbGoods{" +
+            "id=" + id +
+            ", gid='" + gid + '\'' +
+            ", gname='" + gname + '\'' +
+            ", gprice=" + gprice +
+            ", gpicture='" + gpicture + '\'' +
+            ", gmessage='" + gmessage + '\'' +
+            ", gstatus=" + gstatus +
+            ", typeId=" + typeId +
+            '}';
+  }
 }

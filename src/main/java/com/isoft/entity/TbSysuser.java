@@ -3,7 +3,7 @@ package com.isoft.entity;
 
 import java.io.Serializable;
 
-public class TbSysuser implements Serializable {
+public class TbSysuser  implements Serializable {
 
   private long id;
   private String sid;
@@ -101,3 +101,4 @@ public class TbSysuser implements Serializable {
             '}';
   }
 }
+

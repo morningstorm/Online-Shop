@@ -1,29 +1,32 @@
 package com.isoft.entity;
 
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class TbOrder implements Serializable {
+public class TbOrder  implements Serializable {
 
   private long id;
+  private String oid;
+  private long auserId;
   private double amount;
   private long status;
   private java.sql.Timestamp orderdate;
   private String message;
   private String address;
-  private long auserId;
 
   public TbOrder() {
   }
 
-  public TbOrder(long id, double amount, long status, Timestamp orderdate, String message, String address, long auserId) {
+  public TbOrder(long id, String oid, long auserId, double amount, long status, Timestamp orderdate, String message, String address) {
     this.id = id;
+    this.oid = oid;
+    this.auserId = auserId;
     this.amount = amount;
     this.status = status;
     this.orderdate = orderdate;
     this.message = message;
     this.address = address;
-    this.auserId = auserId;
   }
 
   public long getId() {
@@ -32,6 +35,24 @@ public class TbOrder implements Serializable {
 
   public void setId(long id) {
     this.id = id;
+  }
+
+
+  public String getOid() {
+    return oid;
+  }
+
+  public void setOid(String oid) {
+    this.oid = oid;
+  }
+
+
+  public long getAuserId() {
+    return auserId;
+  }
+
+  public void setAuserId(long auserId) {
+    this.auserId = auserId;
   }
 
 
@@ -79,25 +100,17 @@ public class TbOrder implements Serializable {
     this.address = address;
   }
 
-
-  public long getAuserId() {
-    return auserId;
-  }
-
-  public void setAuserId(long auserId) {
-    this.auserId = auserId;
-  }
-
   @Override
   public String toString() {
     return "TbOrder{" +
             "id=" + id +
+            ", oid='" + oid + '\'' +
+            ", auserId=" + auserId +
             ", amount=" + amount +
             ", status=" + status +
             ", orderdate=" + orderdate +
             ", message='" + message + '\'' +
             ", address='" + address + '\'' +
-            ", auserId=" + auserId +
             '}';
   }
 }

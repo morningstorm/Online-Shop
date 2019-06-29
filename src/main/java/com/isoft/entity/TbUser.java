@@ -1,5 +1,6 @@
 package com.isoft.entity;
 
+
 import java.io.Serializable;
 import java.sql.Date;
 
@@ -15,11 +16,15 @@ public class TbUser implements Serializable {
   private String uemail;
   private java.sql.Date birthday;
   private String upicture;
-  private Integer status;
+  private long status;
 
-  public TbUser() { }
+  public TbUser() {
+  }
 
-  public TbUser(long id, String uid, String uname, String upass, String usex, String umobile, String uaddress, String uemail, Date birthday, String upicture,Integer status) {
+  public TbUser(long id, String uid, String uname,
+                String upass, String usex, String umobile,
+                String uaddress, String uemail, Date birthday,
+                String upicture, long status) {
     this.id = id;
     this.uid = uid;
     this.uname = uname;
@@ -122,6 +127,15 @@ public class TbUser implements Serializable {
     this.upicture = upicture;
   }
 
+
+  public long getStatus() {
+    return status;
+  }
+
+  public void setStatus(long status) {
+    this.status = status;
+  }
+
   @Override
   public String toString() {
     return "TbUser{" +
@@ -135,7 +149,7 @@ public class TbUser implements Serializable {
             ", uemail='" + uemail + '\'' +
             ", birthday=" + birthday +
             ", upicture='" + upicture + '\'' +
-            ", status='" + status + '\'' +
+            ", status=" + status +
             '}';
   }
 }
