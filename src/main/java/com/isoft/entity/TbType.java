@@ -5,13 +5,13 @@ import java.io.Serializable;
 
 public class TbType  implements Serializable {
 
-  private long id;
+  private int id;
   private String lbname;
 
   public TbType() {
   }
 
-  public TbType(long id, String lbname) {
+  public TbType(int id, String lbname) {
     this.id = id;
     this.lbname = lbname;
   }
@@ -20,7 +20,7 @@ public class TbType  implements Serializable {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(int id) {
     this.id = id;
   }
 
