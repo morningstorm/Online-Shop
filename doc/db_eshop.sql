@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80013
 File Encoding         : 65001
 
-Date: 2019-06-28 16:26:25
+Date: 2019-06-30 09:24:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -80,7 +80,6 @@ INSERT INTO `tb_order` VALUES ('2', 'O02', '1', '16.8', '1', '2019-06-28 15:28:3
 DROP TABLE IF EXISTS `tb_orderinfo`;
 CREATE TABLE `tb_orderinfo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
   `goods_id` int(11) NOT NULL,
   `num` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -90,10 +89,10 @@ CREATE TABLE `tb_orderinfo` (
 -- ----------------------------
 -- Records of tb_orderinfo
 -- ----------------------------
-INSERT INTO `tb_orderinfo` VALUES ('1', '1', '1', '10', '1');
-INSERT INTO `tb_orderinfo` VALUES ('2', '1', '1', '20', '2');
-INSERT INTO `tb_orderinfo` VALUES ('3', '1', '2', '30', '1');
-INSERT INTO `tb_orderinfo` VALUES ('4', '1', '2', '50', '2');
+INSERT INTO `tb_orderinfo` VALUES ('1', '1', '10', '1');
+INSERT INTO `tb_orderinfo` VALUES ('2', '1', '20', '2');
+INSERT INTO `tb_orderinfo` VALUES ('3', '2', '30', '1');
+INSERT INTO `tb_orderinfo` VALUES ('4', '2', '50', '2');
 
 -- ----------------------------
 -- Table structure for tb_sysuser
@@ -105,7 +104,7 @@ CREATE TABLE `tb_sysuser` (
   `sname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '管理员用户名',
   `spass` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '密码',
   `smobile` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '联系方式',
-  `status` tinyint(4) NOT NULL COMMENT '状态（1-启用，0-冻结）',
+  `state` tinyint(4) NOT NULL COMMENT '状态（1-启用，0-冻结）',
   `srole` tinyint(4) NOT NULL COMMENT '角色（0-系统管理员、1-商品管理员、2-用户管理员）',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
@@ -150,7 +149,7 @@ CREATE TABLE `tb_user` (
   `uemail` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '邮箱',
   `birthday` date DEFAULT NULL COMMENT '生日',
   `upicture` varchar(255) DEFAULT NULL,
-  `status` tinyint(2) NOT NULL DEFAULT '1' COMMENT '0-冻结，1-可用',
+  `state` tinyint(2) NOT NULL DEFAULT '1' COMMENT '0-冻结，1-可用',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
@@ -167,7 +166,7 @@ INSERT INTO `tb_user` VALUES ('5', 'U005', 'lichen', '333', '男', '51616518946'
 -- View structure for v_ordergoods
 -- ----------------------------
 DROP VIEW IF EXISTS `v_ordergoods`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_ordergoods` AS select `tb_goods`.`gpicture` AS `商品图片`,`tb_orderinfo`.`num` AS `商品个数`,`tb_goods`.`gprice` AS `商品单价` from (`tb_goods` join `tb_orderinfo`) where ((`tb_orderinfo`.`user_id` = 1) and (`tb_orderinfo`.`order_id` = 1)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_ordergoods` AS select `tb_goods`.`gpicture` AS `商品图片`,`tb_orderinfo`.`num` AS `商品个数`,`tb_goods`.`gprice` AS `商品单价`,(`tb_orderinfo`.`num` * `tb_goods`.`gprice`) AS `总价` from (`tb_goods` join `tb_orderinfo`) where (`tb_orderinfo`.`order_id` = 1) ;
 
 -- ----------------------------
 -- View structure for v_orderinfo

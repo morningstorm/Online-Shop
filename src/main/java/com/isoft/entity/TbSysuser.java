@@ -10,19 +10,19 @@ public class TbSysuser  implements Serializable {
   private String sname;
   private String spass;
   private String smobile;
-  private long status;
+  private long state;
   private long srole;
 
   public TbSysuser() {
   }
 
-  public TbSysuser(long id, String sid, String sname, String spass, String smobile, long status, long srole) {
+  public TbSysuser(long id, String sid, String sname, String spass, String smobile, long state, long srole) {
     this.id = id;
     this.sid = sid;
     this.sname = sname;
     this.spass = spass;
     this.smobile = smobile;
-    this.status = status;
+    this.state = state;
     this.srole = srole;
   }
 
@@ -71,12 +71,12 @@ public class TbSysuser  implements Serializable {
   }
 
 
-  public long getStatus() {
-    return status;
+  public long getState() {
+    return state;
   }
 
-  public void setStatus(long status) {
-    this.status = status;
+  public void setState(long state) {
+    this.state = state;
   }
 
 
@@ -96,7 +96,7 @@ public class TbSysuser  implements Serializable {
             ", sname='" + sname + '\'' +
             ", spass='" + spass + '\'' +
             ", smobile='" + smobile + '\'' +
-            ", status=" + status +
+            ", state=" + state +
             ", srole=" + srole +
             '}';
   }
