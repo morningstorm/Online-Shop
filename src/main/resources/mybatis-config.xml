@@ -21,13 +21,14 @@
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">   <!-- UNPOOLED 只在每次请时打开和关闭一个连接；POOLED 缓存JDBC连接对象；JDNI 和Spring时使用 -->
                 <property name="driver" value="${jdbc.driverClassName}"/>
-                <property name="url" value="${jdbc.jdbcurl}"/>
-                <property name="username" value="${jdbc.user}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
                 <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
     </environments>
     <mappers>
-        <mapper resource="?.xml"/>
+<!--        <mapper resource="?.xml"/>-->
+        <mapper class="com.isoft.dao.TypeDao"></mapper>
     </mappers>
 </configuration>
