@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80013
 File Encoding         : 65001
 
-Date: 2019-06-30 09:24:26
+Date: 2019-06-30 09:38:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -104,7 +104,7 @@ CREATE TABLE `tb_sysuser` (
   `sname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '管理员用户名',
   `spass` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '密码',
   `smobile` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '联系方式',
-  `state` tinyint(4) NOT NULL COMMENT '状态（1-启用，0-冻结）',
+  `status` tinyint(4) NOT NULL COMMENT '状态（1-启用，0-冻结）',
   `srole` tinyint(4) NOT NULL COMMENT '角色（0-系统管理员、1-商品管理员、2-用户管理员）',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
@@ -149,7 +149,7 @@ CREATE TABLE `tb_user` (
   `uemail` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '邮箱',
   `birthday` date DEFAULT NULL COMMENT '生日',
   `upicture` varchar(255) DEFAULT NULL,
-  `state` tinyint(2) NOT NULL DEFAULT '1' COMMENT '0-冻结，1-可用',
+  `status` tinyint(2) NOT NULL DEFAULT '1' COMMENT '0-冻结，1-可用',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 

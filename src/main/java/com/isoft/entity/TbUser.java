@@ -16,7 +16,7 @@ public class TbUser implements Serializable {
   private String uemail;
   private java.sql.Date birthday;
   private String upicture;
-  private long state;
+  private long status;
 
   public TbUser() {
   }
@@ -24,7 +24,7 @@ public class TbUser implements Serializable {
   public TbUser(long id, String uid, String uname,
                 String upass, String usex, String umobile,
                 String uaddress, String uemail, Date birthday,
-                String upicture, long state) {
+                String upicture, long status) {
     this.id = id;
     this.uid = uid;
     this.uname = uname;
@@ -35,7 +35,7 @@ public class TbUser implements Serializable {
     this.uemail = uemail;
     this.birthday = birthday;
     this.upicture = upicture;
-    this.state = state;
+    this.status = status;
   }
 
   public long getId() {
@@ -128,12 +128,12 @@ public class TbUser implements Serializable {
   }
 
 
-  public long getState() {
-    return state;
+  public long getStatus() {
+    return status;
   }
 
-  public void setState(long state) {
-    this.state = state;
+  public void setStatus(long status) {
+    this.status = status;
   }
 
   @Override
@@ -149,7 +149,7 @@ public class TbUser implements Serializable {
             ", uemail='" + uemail + '\'' +
             ", birthday=" + birthday +
             ", upicture='" + upicture + '\'' +
-            ", state=" + state +
+            ", status=" + status +
             '}';
   }
 }
