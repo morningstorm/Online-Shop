@@ -5,19 +5,19 @@ import java.io.Serializable;
 
 public class TbGoods  implements Serializable {
 
-  private int id;
+  private Integer id;
   private String gid;
   private String gname;
   private double gprice;
   private String gpicture;
   private String gmessage;
-  private int gstatus;
-  private int typeId;
+  private Integer gstatus;
+  private Integer typeId;
 
   public TbGoods() {
   }
 
-  public TbGoods(int id, String gid, String gname, double gprice, String gpicture, String gmessage, int gstatus, int typeId) {
+  public TbGoods(Integer id, String gid, String gname, double gprice, String gpicture, String gmessage, Integer gstatus, Integer typeId) {
     this.id = id;
     this.gid = gid;
     this.gname = gname;
@@ -32,7 +32,7 @@ public class TbGoods  implements Serializable {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -86,7 +86,7 @@ public class TbGoods  implements Serializable {
     return gstatus;
   }
 
-  public void setGstatus(int gstatus) {
+  public void setGstatus(Integer gstatus) {
     this.gstatus = gstatus;
   }
 
@@ -95,7 +95,7 @@ public class TbGoods  implements Serializable {
     return typeId;
   }
 
-  public void setTypeId(int typeId) {
+  public void setTypeId(Integer typeId) {
     this.typeId = typeId;
   }
 

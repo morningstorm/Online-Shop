@@ -13,4 +13,7 @@ public interface TypeDao {
 //    查询所有商品类别
     @Select("select * from tb_type")
     List<TbType> selectAll();
+//    删除商品类别
+
+//    修改商品类别名
 }

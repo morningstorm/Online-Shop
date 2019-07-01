@@ -30,5 +30,6 @@
     <mappers>
 <!--        <mapper resource="?.xml"/>-->
         <mapper class="com.isoft.dao.TypeDao"></mapper>
+        <mapper class="com.isoft.dao.GoodsDao"></mapper>
     </mappers>
 </configuration>
