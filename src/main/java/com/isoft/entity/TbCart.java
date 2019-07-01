@@ -5,43 +5,43 @@ import java.io.Serializable;
 
 public class TbCart  implements Serializable {
 
-  private long id;
-  private long auserId;
-  private long goodsId;
+  private int id;
+  private int auserId;
+  private int goodsId;
 
 
   public TbCart() {
   }
 
-  public TbCart(long id, long auserId, long goodsId) {
+  public TbCart(int id, int auserId, int goodsId) {
     this.id = id;
     this.auserId = auserId;
     this.goodsId = goodsId;
   }
 
-  public long getId() {
+  public int getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(int id) {
     this.id = id;
   }
 
 
-  public long getAuserId() {
+  public int getAuserId() {
     return auserId;
   }
 
-  public void setAuserId(long auserId) {
+  public void setAuserId(int auserId) {
     this.auserId = auserId;
   }
 
 
-  public long getGoodsId() {
+  public int getGoodsId() {
     return goodsId;
   }
 
-  public void setGoodsId(long goodsId) {
+  public void setGoodsId(int goodsId) {
     this.goodsId = goodsId;
   }
 

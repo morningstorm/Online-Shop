@@ -6,11 +6,11 @@ import java.sql.Timestamp;
 
 public class TbOrder  implements Serializable {
 
-  private long id;
+  private int id;
   private String oid;
-  private long auserId;
+  private int auserId;
   private double amount;
-  private long status;
+  private int status;
   private java.sql.Timestamp orderdate;
   private String message;
   private String address;
@@ -18,7 +18,7 @@ public class TbOrder  implements Serializable {
   public TbOrder() {
   }
 
-  public TbOrder(long id, String oid, long auserId, double amount, long status, Timestamp orderdate, String message, String address) {
+  public TbOrder(int id, String oid, int auserId, double amount, int status, Timestamp orderdate, String message, String address) {
     this.id = id;
     this.oid = oid;
     this.auserId = auserId;
@@ -29,11 +29,11 @@ public class TbOrder  implements Serializable {
     this.address = address;
   }
 
-  public long getId() {
+  public int getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(int id) {
     this.id = id;
   }
 
@@ -47,11 +47,11 @@ public class TbOrder  implements Serializable {
   }
 
 
-  public long getAuserId() {
+  public int getAuserId() {
     return auserId;
   }
 
-  public void setAuserId(long auserId) {
+  public void setAuserId(int auserId) {
     this.auserId = auserId;
   }
 
@@ -65,11 +65,11 @@ public class TbOrder  implements Serializable {
   }
 
 
-  public long getStatus() {
+  public int getStatus() {
     return status;
   }
 
-  public void setStatus(long status) {
+  public void setStatus(int status) {
     this.status = status;
   }
 

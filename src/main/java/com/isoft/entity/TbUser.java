@@ -6,7 +6,7 @@ import java.sql.Date;
 
 public class TbUser implements Serializable {
 
-  private long id;
+  private int id;
   private String uid;
   private String uname;
   private String upass;
@@ -16,15 +16,15 @@ public class TbUser implements Serializable {
   private String uemail;
   private java.sql.Date birthday;
   private String upicture;
-  private long status;
+  private int status;
 
   public TbUser() {
   }
 
-  public TbUser(long id, String uid, String uname,
+  public TbUser(int id, String uid, String uname,
                 String upass, String usex, String umobile,
                 String uaddress, String uemail, Date birthday,
-                String upicture, long status) {
+                String upicture, int status) {
     this.id = id;
     this.uid = uid;
     this.uname = uname;
@@ -38,11 +38,11 @@ public class TbUser implements Serializable {
     this.status = status;
   }
 
-  public long getId() {
+  public int getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(int id) {
     this.id = id;
   }
 
@@ -128,11 +128,11 @@ public class TbUser implements Serializable {
   }
 
 
-  public long getStatus() {
+  public int getStatus() {
     return status;
   }
 
-  public void setStatus(long status) {
+  public void setStatus(int status) {
     this.status = status;
   }
 

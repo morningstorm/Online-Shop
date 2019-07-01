@@ -5,53 +5,53 @@ import java.io.Serializable;
 
 public class TbOrderinfo  implements Serializable {
 
-  private long id;
-  private long goodsId;
-  private long num;
-  private long orderId;
+  private int id;
+  private int goodsId;
+  private int num;
+  private int orderId;
 
   public TbOrderinfo() {
   }
 
-  public TbOrderinfo(long id, long goodsId, long num, long orderId) {
+  public TbOrderinfo(int id, int goodsId, int num, int orderId) {
     this.id = id;
     this.goodsId = goodsId;
     this.num = num;
     this.orderId = orderId;
   }
 
-  public long getId() {
+  public int getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(int id) {
     this.id = id;
   }
 
 
-  public long getGoodsId() {
+  public int getGoodsId() {
     return goodsId;
   }
 
-  public void setGoodsId(long goodsId) {
+  public void setGoodsId(int goodsId) {
     this.goodsId = goodsId;
   }
 
 
-  public long getNum() {
+  public int getNum() {
     return num;
   }
 
-  public void setNum(long num) {
+  public void setNum(int num) {
     this.num = num;
   }
 
 
-  public long getOrderId() {
+  public int getOrderId() {
     return orderId;
   }
 
-  public void setOrderId(long orderId) {
+  public void setOrderId(int orderId) {
     this.orderId = orderId;
   }
 

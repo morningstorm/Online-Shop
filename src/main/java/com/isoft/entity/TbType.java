@@ -16,7 +16,7 @@ public class TbType  implements Serializable {
     this.lbname = lbname;
   }
 
-  public long getId() {
+  public int getId() {
     return id;
   }
 

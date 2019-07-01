@@ -5,20 +5,20 @@ import java.io.Serializable;
 
 public class TbSysuser  implements Serializable {
 
-  private long id;
+  private int id;
   private String sid;
   private String sname;
   private String spass;
   private String smobile;
-  private long status;
-  private long srole;
+  private int status;
+  private int srole;
 
   public TbSysuser() {
   }
 
-  public TbSysuser(long id, String sid, String sname,
-                   String spass, String smobile, long status,
-                   long srole) {
+  public TbSysuser(int id, String sid, String sname,
+                   String spass, String smobile, int status,
+                   int srole) {
     this.id = id;
     this.sid = sid;
     this.sname = sname;
@@ -28,11 +28,11 @@ public class TbSysuser  implements Serializable {
     this.srole = srole;
   }
 
-  public long getId() {
+  public int getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(int id) {
     this.id = id;
   }
 
@@ -73,20 +73,20 @@ public class TbSysuser  implements Serializable {
   }
 
 
-  public long getStatus() {
+  public int getStatus() {
     return status;
   }
 
-  public void setStatus(long status) {
+  public void setStatus(int status) {
     this.status = status;
   }
 
 
-  public long getSrole() {
+  public int getSrole() {
     return srole;
   }
 
-  public void setSrole(long srole) {
+  public void setSrole(int srole) {
     this.srole = srole;
   }
 
