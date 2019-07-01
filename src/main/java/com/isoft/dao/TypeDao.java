@@ -1,8 +1,7 @@
 package com.isoft.dao;
 
 import com.isoft.entity.TbType;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -14,6 +13,9 @@ public interface TypeDao {
     @Select("select * from tb_type")
     List<TbType> selectAll();
 //    删除商品类别
-
+    @Delete("delete from tb_type where id=#{id}")
+    int deleteVariety(Integer id);
 //    修改商品类别名
+    @Update("update tb_type set lbname=#{lbname} where id=#{id}")
+    int modifyVariety(@Param("id") Integer id,@Param("lbname") String lbname);
 }
