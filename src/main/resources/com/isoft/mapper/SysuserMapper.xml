@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.isoft.dao.SysuserDao">
+
+    <update id="update" parameterType="Employee">
+        update tb_sysuser
+        <set>
+            <if test="null != smobile">smobile=#{smobile},</if>
+            <if test="null != srole">srole=#{srole},</if>
+        </set>
+        where id=#{id}
+    </update>
+
+
+    <!--int updateMoreState(Integer[] ids) ;-->
+    <update id="updateMoreState">
+        update tb_sysuser set state=0  where id in
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+
+    <!--int add(Employee employee) ;-->
+    <!--<insert id="add" parameterType="TbSysuser">
+        insert into tb_employee(sid,sname,spass
+        <if test="null != smobile">,smobile</if>
+        ,status,srole
+        )
+        values(#{sid},#{sname},#{spass}
+        <if test="null != smobile">,#{smobile}</if>
+        ,#{status},#{srole}
+        )
+    </insert>-->
+
+    <!--<select id="selectPage" resultType="TbSysuser">
+        select * from tb_sysuser
+        where srole = #{srole}
+        <if test="null != sname">
+            <bind name="tname" value="'%'+ sname + '%'"/>
+            and sname like #{tname}
+        </if>
+        <if test="null != status">
+            and status = #{status}
+        </if>
+        <if test="null != smobile">
+            <bind name="mobile" value="'%'+ smobile + '%'"/>
+            and mobile like #{mobile}
+        </if>
+        <if test="null != order">
+            order by ${order}
+        </if>
+
+        limit #{offset} , #{size}
+    </select>
+
+    <select id="selectTotal" resultType="java.lang.Integer">
+        select count(*) from tb_sysuser
+        where srole = #{srole}
+        <if test="null != sname">
+            <bind name="tname" value="'%'+ sname + '%'"/>
+            and sname like #{tname}
+        </if>
+        <if test="null != status">
+            and status = #{status}
+        </if>
+        <if test="null != smobile">
+            <bind name="mobile" value="'%'+ smobile + '%'"/>
+            and mobile like #{mobile}
+        </if>
+        <if test="null != order">
+            order by ${order}
+        </if>
+    </select>-->
+
+</mapper>
