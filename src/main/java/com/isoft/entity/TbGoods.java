@@ -28,7 +28,7 @@ public class TbGoods  implements Serializable {
     this.typeId = typeId;
   }
 
-  public int getId() {
+  public Integer getId() {
     return id;
   }
 
@@ -82,7 +82,7 @@ public class TbGoods  implements Serializable {
   }
 
 
-  public int getGstatus() {
+  public Integer getGstatus() {
     return gstatus;
   }
 
@@ -91,7 +91,7 @@ public class TbGoods  implements Serializable {
   }
 
 
-  public int getTypeId() {
+  public Integer getTypeId() {
     return typeId;
   }
 

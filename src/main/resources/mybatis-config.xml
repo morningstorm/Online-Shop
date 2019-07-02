@@ -10,11 +10,11 @@
         <!-- 将积极加载改为消息加载即按需加载 -->
         <setting name="aggressiveLazyLoading" value="false"/>
     </settings>
-    <!--
+
       <typeAliases>
-          <package name="com.rounding.entity"/>
+          <package name="com.isoft.entity"/>
       </typeAliases>
-      -->
+
     <!-- 配置数据库连接 -->
     <environments default="development">
         <environment id="development">
@@ -28,8 +28,8 @@
         </environment>
     </environments>
     <mappers>
-<!--        <mapper resource="?.xml"/>-->
         <mapper class="com.isoft.dao.TypeDao"></mapper>
         <mapper class="com.isoft.dao.GoodsDao"></mapper>
+        <mapper resource="com/isoft/mapper/GoodsMapper.xml"/>
     </mappers>
 </configuration>

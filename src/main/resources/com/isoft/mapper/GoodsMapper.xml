@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.isoft.dao.GoodsDao">
+<!--    添加商品-->
+    <insert id="addGoods" parameterType="TbGoods">
+        insert into tb_goods(gid,gname,gprice,gstatus
+            <if test="null != gpicture">,gpicture</if>
+            <if test="null != gmessage">,gmessage</if>
+            <if test="null != typeId">,type_id</if>
+        )
+        values(#{gid},#{gname},#{gprice},#{gstatus}
+            <if test="null != gpicture">,#{gpicture}</if>
+            <if test="null != gmessage">,#{gmessage}</if>
+            <if test="null != typeId">,#{typeId}</if>
+        )
+    </insert>
+<!--    //    分页查询所有商品-->
+<!--    List<TbGoods> selectgoods(@Param("offset") Integer offset,@Param("size") Integer size,-->
+<!--    @Param("gname") String gname,@Param("gprice") double gprice,-->
+<!--    @Param("gstatus") Integer gstatus,@Param("typeId") Integer typeId-->
+<!--    );-->
+    <select id="selectgoods" resultType="TbGoods">
+        select * from tb_goods
+        where
+        <if test="null != gname">
+            <bind name="gnamekey" value="'%'+gname+'%'"/>
+            gname like #{gnamekey}
+        </if>
+        <if test="null != gstatus">
+            and gstatus=#{gstatus}
+        </if>
+        <if test="null != typeId">
+            and type_id=#{typeId}
+        </if>
+        <if test="null != order">
+            order by #{order}
+        </if>
+
+        limit #{offset},#{size}
+    </select>
+<!--    //    行数-->
+<!--    int GoodsTotal(@Param("offset") Integer offset,@Param("size") Integer size,-->
+<!--    @Param("gname") String gname,@Param("gprice") double gprice,-->
+<!--    @Param("gstatus") Integer gstatus,@Param("typeID") Integer typeId-->
+<!--    );-->
+    <select id="GoodsTotal" resultType="java.lang.Integer">
+        select count(*) from tb_goods
+        where
+        <if test="null != gname">
+            <bind name="gnamekey" value="'%'+gname+'%'"/>
+            gname like #{gnamekey}
+        </if>
+        <if test="null != gstatus">
+            and gstatus=#{gstatus}
+        </if>
+        <if test="null != typeId">
+            and type_id=#{typeId}
+        </if>
+        <if test="null != order">
+            order by #{order}
+        </if>
+    </select>
+<!--    //    修改商品信息-->
+<!--    int updatemessage(TbGoods tbgoods);-->
+
+</mapper>
