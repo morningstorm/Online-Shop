@@ -15,8 +15,7 @@ public interface SysuserService {
     /**
      *  添加管理员
      */
-
-    boolean addUser(String sname, String spass, int srole);
+    boolean addUser(String sid, String sname, String spass,String smobile, Integer srole);
 
     /**
      * 查看所有管理员
@@ -26,7 +25,8 @@ public interface SysuserService {
     /**
      * 登录校验
      */
-    TbSysuser loginCheck(String name, String pass) ;
+    TbSysuser loginCheck(String sid, String spass) ;
+
 
     /**
      * 修改密码
@@ -36,7 +36,8 @@ public interface SysuserService {
     /**
      * 离职&在职操作
      */
-    boolean updateState(Integer id, Integer status);
+    boolean addState(Integer id);
+    boolean delState(Integer id);
 
     /**
      * 批量离职操作

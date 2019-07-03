@@ -32,8 +32,8 @@ public class SysuserController {
 
     @RequestMapping("add")
     @ResponseBody
-    public Map<String , Boolean> add(String uname , String upass , int role) {
-        boolean r = sysuserService.addUser(uname , upass , role) ;
+    public Map<String , Boolean> add(String sid, String sname , String spass ,String smobile, int srole) {
+        boolean r = sysuserService.addUser(sid, sname , spass , smobile, srole) ;
         Map<String , Boolean> map = new HashMap<>() ;
         map.put("result" , r) ;
         return map ;
@@ -45,10 +45,19 @@ public class SysuserController {
         return sysuserService.getAll() ;
     }
 
-    @RequestMapping("updatestate")
+    @RequestMapping("addstate")
     @ResponseBody
-    public Map<String , Boolean> updateState(Integer id , Integer state){
-        boolean r = sysuserService.updateState(id ,state) ;
+    public Map<String , Boolean> addState(Integer id){
+        boolean r = sysuserService.addState(id) ;
+        Map<String , Boolean> map = new HashMap<>() ;
+        map.put("result" , r) ;
+        return map ;
+    }
+
+    @RequestMapping("delstate")
+    @ResponseBody
+    public Map<String , Boolean> delState(Integer id){
+        boolean r = sysuserService.delState(id) ;
         Map<String , Boolean> map = new HashMap<>() ;
         map.put("result" , r) ;
         return map ;
