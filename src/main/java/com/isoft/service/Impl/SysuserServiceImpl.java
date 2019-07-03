@@ -71,7 +71,7 @@ public class SysuserServiceImpl implements SysuserService {
         if(StringUtil.isEmpty(newPass) || StringUtil.isEmpty(spass)) {
             return false;
         }
-        return sysuserDao.repass(id, newPass, spass)>0;
+        return sysuserDao.repass(id, MD5Tools.MD5(newPass), MD5Tools.MD5(spass))>0;
     }
 
     @Override

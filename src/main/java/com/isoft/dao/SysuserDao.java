@@ -38,10 +38,10 @@ public interface SysuserDao {
      * @Param state:0--离职，1--在职
      */
     @Update("update tb_sysuser set status=1 where id = #{id}")
-    int addState(@Param("id") int id);
+    int addState(@Param("id") int id);//在职操作
 
     @Update("update tb_sysuser set status=0 where id = #{id}")
-    int delState(@Param("id") int id);
+    int delState(@Param("id") int id);//离职操作
 
     /**
      * 根据id将多个人的状态设置为离职
