@@ -8,7 +8,7 @@ public class TbGoods  implements Serializable {
   private Integer id;
   private String gid;
   private String gname;
-  private double gprice;
+  private Double gprice;
   private String gpicture;
   private String gmessage;
   private Integer gstatus;
@@ -55,11 +55,11 @@ public class TbGoods  implements Serializable {
   }
 
 
-  public double getGprice() {
+  public Double getGprice() {
     return gprice;
   }
 
-  public void setGprice(double gprice) {
+  public void setGprice(Double gprice) {
     this.gprice = gprice;
   }
 

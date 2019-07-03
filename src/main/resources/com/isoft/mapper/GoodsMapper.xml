@@ -64,5 +64,25 @@
     </select>
 <!--    //    修改商品信息-->
 <!--    int updatemessage(TbGoods tbgoods);-->
-
+    <update id="updatemessage" parameterType="TbGoods">
+        update tb_goods
+        <set>
+            <if test="gname!=null">
+                gname=#{gname} ,
+            </if>
+            <if test="gprice!=null">
+                gprice=#{gprice} ,
+            </if>
+            <if test="gpicture!=null">
+                gpicture=#{gpicture},
+            </if>
+            <if test="gmessage!=null">
+                gmessage=#{gmessage},
+            </if>
+            <if test="typeId!=null">
+                type_id=#{typeId}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
 </mapper>
