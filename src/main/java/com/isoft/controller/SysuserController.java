@@ -90,4 +90,13 @@ public class SysuserController {
         return map ;
     }
 
+    @RequestMapping("repass")
+    @ResponseBody
+    public Map<String , Boolean> add(int id, String newPass , String spass) {
+        boolean r = sysuserService.rePass(id,newPass,spass);
+        Map<String , Boolean> map = new HashMap<>() ;
+        map.put("result" , r) ;
+        return map ;
+    }
+
 }

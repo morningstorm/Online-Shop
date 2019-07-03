@@ -64,10 +64,14 @@ public class SysuserServiceImpl implements SysuserService {
     }
 
     @Override
-    public boolean rePass(Integer id, String newPass) {
-        TbSysuser user = new TbSysuser() ;
-
-        return false;
+    public boolean rePass(Integer id, String newPass, String spass) {
+        if(id == null || id < 1) {
+            return false;
+        }
+        if(StringUtil.isEmpty(newPass) || StringUtil.isEmpty(spass)) {
+            return false;
+        }
+        return sysuserDao.repass(id, newPass, spass)>0;
     }
 
     @Override

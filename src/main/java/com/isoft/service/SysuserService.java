@@ -31,7 +31,7 @@ public interface SysuserService {
     /**
      * 修改密码
      */
-    boolean rePass(Integer id, String newPass) ;
+    boolean rePass(Integer id, String newPass, String spass) ;
 
     /**
      * 离职&在职操作

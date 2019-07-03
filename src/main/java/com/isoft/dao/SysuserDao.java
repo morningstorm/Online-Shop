@@ -62,7 +62,7 @@ public interface SysuserDao {
     /**
      * 修改密码
      */
-    @Update("update tb_sysuser set spass=#{newPass} where id=#{id}")
-    int repass(@Param("id") Integer id, @Param("newPass") String newPass) ;
+    @Update("update tb_sysuser set spass=#{newPass} where id=#{id} and spass=#{spass}")
+    int repass(@Param("id") Integer id, @Param("newPass") String newPass, @Param("spass") String spass) ;
 
 }
