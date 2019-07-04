@@ -23,16 +23,19 @@ public class SysuserController {
 
     @RequestMapping(value = "login")
     @ResponseBody
-    public TbSysuser loginCheck(String loginname , String  loginpass) {
+    public TbSysuser loginCheck(String loginname , String  loginpass,int role) {
         if(StringUtil.isEmpty(loginname) || StringUtil.isEmpty(loginpass)) {
             return null ;
         }
-        return sysuserService.loginCheck(loginname , loginpass) ;
+        if(role==0||role==1||role==2){
+            return sysuserService.loginCheck(loginname , loginpass,role) ;
+        }
+        return null;
     }
 
     @RequestMapping("add")
     @ResponseBody
-    public Map<String , Boolean> add(String sid, String sname , String spass ,String smobile, int srole) {
+    public Map<String , Boolean> add(String sid, String sname , String spass ,String smobile, Integer srole) {
         boolean r = sysuserService.addUser(sid, sname , spass , smobile, srole) ;
         Map<String , Boolean> map = new HashMap<>() ;
         map.put("result" , r) ;
@@ -49,6 +52,15 @@ public class SysuserController {
     @ResponseBody
     public Map<String , Boolean> addState(Integer id){
         boolean r = sysuserService.addState(id) ;
+        Map<String , Boolean> map = new HashMap<>() ;
+        map.put("result" , r) ;
+        return map ;
+    }
+
+    @RequestMapping("update")
+    @ResponseBody
+    public Map<String , Boolean> update(Integer id,String sname,String smobile,Integer srole){
+        boolean r = sysuserService.updated(id,sname,smobile,srole) ;
         Map<String , Boolean> map = new HashMap<>() ;
         map.put("result" , r) ;
         return map ;

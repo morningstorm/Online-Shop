@@ -51,13 +51,14 @@ public interface SysuserDao {
     /**
      * 更新信息
      */
-    int update(TbSysuser tbSysuser);
+    int update(@Param("id") Integer id, @Param("sname") String sname, @Param("smobile") String smobile, @Param("srole") Integer srole);
 
     /**
      * 登录校验
      */
-    @Select("select * from tb_sysuser where sid=#{sid} and spass=#{spass} and status=1")
-    TbSysuser login(@Param("sid") String sid, @Param("spass") String spass) ;
+    @Select("select * from tb_sysuser where sid=#{sid} and spass=#{spass} and srole=#{srole} status=1")
+    TbSysuser login(@Param("sid") String sid, @Param("spass") String spass, @Param("srole") int srole) ;
+
 
     /**
      * 修改密码

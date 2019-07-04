@@ -7,8 +7,9 @@
     <update id="update" parameterType="TbSysuser">
         update tb_sysuser
         <set>
+            <if test="null != sname">sname=#{sname},</if>
             <if test="null != smobile">smobile=#{smobile},</if>
-            <if test="null != srole">srole=#{srole},</if>
+            <if test="null != srole">srole=#{srole}</if>
         </set>
         where id=#{id}
     </update>

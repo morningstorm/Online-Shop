@@ -55,12 +55,15 @@ public class SysuserServiceImpl implements SysuserService {
     }
 
     @Override
-    public TbSysuser loginCheck(String sid, String spass) {
+    public TbSysuser loginCheck(String sid, String spass, int srole) {
         if(StringUtil.isEmpty(sid) || StringUtil.isEmpty(spass)) {
             return null ;
         }
-        spass = MD5Tools.MD5(spass) ;
-        return sysuserDao.login(sid , spass) ;
+        if(srole==0||srole==1||srole==2){
+            spass = MD5Tools.MD5(spass) ;
+            return sysuserDao.login(sid , spass , srole) ;
+        }
+        return null;
     }
 
     @Override
@@ -88,6 +91,14 @@ public class SysuserServiceImpl implements SysuserService {
             return false;
         }
         return sysuserDao.delState(id) > 0 ;
+    }
+
+    @Override
+    public boolean updated(Integer id,String sname, String smobile, Integer srole) {
+        if(id == null || id < 1) {
+            return false ;
+        }
+        return sysuserDao.update(id,sname,smobile,srole)>0;
     }
 
     @Override

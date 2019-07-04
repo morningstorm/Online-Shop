@@ -25,7 +25,7 @@ public interface SysuserService {
     /**
      * 登录校验
      */
-    TbSysuser loginCheck(String sid, String spass) ;
+    TbSysuser loginCheck(String sid, String spass, int srole) ;
 
 
     /**
@@ -38,6 +38,11 @@ public interface SysuserService {
      */
     boolean addState(Integer id);
     boolean delState(Integer id);
+
+    /**
+     * 用户信息更改操作
+     */
+    boolean updated(Integer id,String sname, String smobile, Integer srole);
 
     /**
      * 批量离职操作
