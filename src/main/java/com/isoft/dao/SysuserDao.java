@@ -56,8 +56,8 @@ public interface SysuserDao {
     /**
      * 登录校验
      */
-    @Select("select * from tb_sysuser where sid=#{sid} and spass=#{spass} and srole=#{srole} status=1")
-    TbSysuser login(@Param("sid") String sid, @Param("spass") String spass, @Param("srole") int srole) ;
+    @Select("select * from tb_sysuser where sid=#{sid} and spass=#{spass} and  status=1")
+    TbSysuser login(@Param("sid") String sid, @Param("spass") String spass) ;
 
 
     /**

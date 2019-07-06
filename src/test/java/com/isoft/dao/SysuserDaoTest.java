@@ -8,10 +8,12 @@ public class SysuserDaoTest {
     @org.junit.Test
     public void Test() {
         ApplicationContext app = new ClassPathXmlApplicationContext("applicationContext.xml");
-        /*SysuserDao dao = (SysuserDao) app.getBean("sysuserDao");
-        System.out.println(dao.getAll());*/
+        SysuserDao dao = (SysuserDao) app.getBean("sysuserDao");
+        System.out.println(dao.getAll());
 
-        SysuserDao dao = (SysuserDao) app.getBean("sysuserServiceImpl");
+//        SysuserDao dao = (SysuserDao) app.getBean("sysuserServiceImpl");
+
+
     }
 
 }

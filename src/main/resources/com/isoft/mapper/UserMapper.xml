@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.isoft.dao.UserDao">
+
+
+    <insert id="add" parameterType="Tbuser">
+        insert into tb_user(uname,uid,upass,usex,
+        <if test="null != umobile">,umobile</if>
+        uaddress
+        <if test="null != uemail">,uemail</if>
+        ,status
+        )
+        values(#{uname},#{uid},#{upass},#{usex},
+        <if test="null != umobile">,#{umobile}</if>
+        #{uaddress}
+        <if test="null != uemail">,#{uemail}</if>
+        ,1
+        )
+    </insert>
+
+
+    <!--    List<TbUser> selectgoods(@Param("offset") Integer offset, @Param("size") Integer size,
+@Param("uname") String uname, @Param("order") String order, @Param("orderSort") String orderSort,
+@Param("usex") Integer gstatus, @Param("umobile") Integer typeId
+);-->
+
+    <select id="selectuser"   resultType="TbUser">
+        select * from tb_user
+        where status = 1
+        <if test="null != uname">
+            <bind name="gnamekey" value="'%'+uname+'%'"/>
+            and uname like #{gnamekey}
+        </if>
+        <if test="null != umobile">
+            <bind name="mobilekey" value="'%'+umobile+'%'"/>
+            and umobile like #{mobilekey}
+        </if>
+        <if test="null != usex">
+            and usex=#{usex}
+        </if>
+        <if test="null != order">
+            order by ${order} ${orderSort}
+        </if>
+        limit #{offset},#{size}
+    </select>
+
+    <select id="UserTotal" resultType="java.lang.Integer">
+        select count(*) from tb_user
+        where status = 1
+        <if test="null != uname">
+            <bind name="gnamekey" value="'%'+uname+'%'"/>
+            and uname like #{gnamekey}
+        </if>
+        <if test="null != umobile">
+            <bind name="mobilekey" value="'%'+umobile+'%'"/>
+            and umobile like #{mobilekey}
+        </if>
+        <if test="null != usex">
+            and usex=#{usex}
+        </if>
+    </select>
+</mapper>

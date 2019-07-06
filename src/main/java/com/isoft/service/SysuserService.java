@@ -25,7 +25,7 @@ public interface SysuserService {
     /**
      * 登录校验
      */
-    TbSysuser loginCheck(String sid, String spass, int srole) ;
+    TbSysuser loginCheck(String sid, String spass) ;
 
 
     /**

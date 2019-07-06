@@ -23,14 +23,11 @@ public class SysuserController {
 
     @RequestMapping(value = "login")
     @ResponseBody
-    public TbSysuser loginCheck(String loginname , String  loginpass,int role) {
+    public TbSysuser loginCheck(String loginname , String  loginpass) {
         if(StringUtil.isEmpty(loginname) || StringUtil.isEmpty(loginpass)) {
             return null ;
         }
-        if(role==0||role==1||role==2){
-            return sysuserService.loginCheck(loginname , loginpass,role) ;
-        }
-        return null;
+        return sysuserService.loginCheck(loginname , loginpass) ;
     }
 
     @RequestMapping("add")

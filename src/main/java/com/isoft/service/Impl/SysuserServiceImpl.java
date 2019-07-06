@@ -55,15 +55,12 @@ public class SysuserServiceImpl implements SysuserService {
     }
 
     @Override
-    public TbSysuser loginCheck(String sid, String spass, int srole) {
+    public TbSysuser loginCheck(String sid, String spass) {
         if(StringUtil.isEmpty(sid) || StringUtil.isEmpty(spass)) {
             return null ;
         }
-        if(srole==0||srole==1||srole==2){
             spass = MD5Tools.MD5(spass) ;
-            return sysuserDao.login(sid , spass , srole) ;
-        }
-        return null;
+            return sysuserDao.login(sid , spass) ;
     }
 
     @Override

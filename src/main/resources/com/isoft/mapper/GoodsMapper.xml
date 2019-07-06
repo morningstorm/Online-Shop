@@ -21,12 +21,12 @@
 <!--    @Param("gname") String gname,@Param("gprice") double gprice,-->
 <!--    @Param("gstatus") Integer gstatus,@Param("typeId") Integer typeId-->
 <!--    );-->
-    <select id="selectgoods" resultType="TbGoods">
+    <select id="selectgoods"   resultType="TbGoods">
         select * from tb_goods
-        where
+        where id>0
         <if test="null != gname">
             <bind name="gnamekey" value="'%'+gname+'%'"/>
-            gname like #{gnamekey}
+            and gname like #{gnamekey}
         </if>
         <if test="null != gstatus">
             and gstatus=#{gstatus}
@@ -35,7 +35,7 @@
             and type_id=#{typeId}
         </if>
         <if test="null != order">
-            order by #{order}
+            order by ${order} ${orderSort}
         </if>
 
         limit #{offset},#{size}
@@ -47,19 +47,16 @@
 <!--    );-->
     <select id="GoodsTotal" resultType="java.lang.Integer">
         select count(*) from tb_goods
-        where
+        where id>0
         <if test="null != gname">
             <bind name="gnamekey" value="'%'+gname+'%'"/>
-            gname like #{gnamekey}
+            and gname like #{gnamekey}
         </if>
         <if test="null != gstatus">
             and gstatus=#{gstatus}
         </if>
         <if test="null != typeId">
             and type_id=#{typeId}
-        </if>
-        <if test="null != order">
-            order by #{order}
         </if>
     </select>
 <!--    //    修改商品信息-->
@@ -80,7 +77,7 @@
                 gmessage=#{gmessage},
             </if>
             <if test="typeId!=null">
-                type_id=#{typeId}
+                type_id=#${typeId}
             </if>
         </set>
         where id=#{id}
