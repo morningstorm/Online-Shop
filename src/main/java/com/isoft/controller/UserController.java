@@ -63,4 +63,23 @@ public class UserController {
         map.put("rows" , page.getPageData()) ;
         return map ;
     }
+
+    @RequestMapping("addstate")
+    @ResponseBody
+    public Map<String , Boolean> addState(Integer id){
+        boolean r = userService.addState(id) ;
+        Map<String , Boolean> map = new HashMap<>() ;
+        map.put("result" , r) ;
+        return map ;
+    }
+
+
+    @RequestMapping("delstate")
+    @ResponseBody
+    public Map<String , Boolean> delState(Integer id){
+        boolean r = userService.delState(id) ;
+        Map<String , Boolean> map = new HashMap<>() ;
+        map.put("result" , r) ;
+        return map ;
+    }
 }

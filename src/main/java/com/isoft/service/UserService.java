@@ -15,4 +15,10 @@ public interface UserService {
     Page<TbUser> pageData(String uname, String umobile, String usex,
                           Integer pagenumber, Integer size, String sortColumnName,
                           String orderSort);
+
+    /**
+     * 离职&在职操作
+     */
+    boolean addState(Integer id);
+    boolean delState(Integer id);
 }

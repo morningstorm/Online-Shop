@@ -25,6 +25,22 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public boolean addState(Integer id) {
+        if(id == null || id < 1) {
+            return false;
+        }
+        return userDao.addState(id) > 0 ;
+    }
+
+    @Override
+    public boolean delState(Integer id) {
+        if(id == null || id < 1) {
+            return false;
+        }
+        return userDao.delState(id) > 0 ;
+    }
+
+    @Override
     public boolean addUser(String uname, String uid, String upass, String usex,
                            String umobile, String uaddress, String uemail) {
         if(StringUtil.isEmpty(uname) || StringUtil.isEmpty(uid) || StringUtil.isEmpty(upass)
