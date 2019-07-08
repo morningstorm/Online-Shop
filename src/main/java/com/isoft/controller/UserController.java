@@ -45,6 +45,9 @@ public class UserController {
     @RequestMapping("getData")
     @ResponseBody
     //    分页查询所有商品
+//            (String uname, String umobile, String usex,
+//                    Integer pagenumber, Integer size, String sortColumnName,
+//                    String orderSort)
     public Map<String ,Object> getData(String uname, String order, String orderSort, String usex,
                                        String umobile, Integer pageNumber, Integer pageSize){
         if(uname == ""){

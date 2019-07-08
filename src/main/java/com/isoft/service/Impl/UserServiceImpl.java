@@ -66,6 +66,9 @@ public class UserServiceImpl implements UserService{
                           Integer pagenumber, Integer size, String sortColumnName,
                           String orderSort){
         int rowCount = userDao.UserTotal(uname,umobile,usex);
+//        @Param("offset") Integer offset, @Param("size") Integer size,
+//        @Param("uname") String uname, @Param("order") String order, @Param("orderSort") String orderSort,
+//        @Param("usex") String usex, @Param("umobile") String umobile
         List<TbUser> datas=userDao.selectuser((pagenumber-1)*size,size,uname,sortColumnName,orderSort,usex,umobile);
         Page<TbUser> page=new Page<>();
         page.setPage(pagenumber);
